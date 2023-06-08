@@ -1,21 +1,74 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Inventory Dashboard</title>
+    <title>StockWise Inventory Management</title>
     <style>
-      .dashboard-container {
-        max-width: 800px;
-        margin: 0 auto;
+      body {
+        font-family: Arial, sans-serif;
       }
-      canvas {
+
+      h1 {
+        text-align: center;
         margin-top: 20px;
+      }
+
+      .tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .tab-button {
+        padding: 10px 20px;
+        cursor: pointer;
+        background-color: #f1f1f1;
+        border: none;
+        border-radius: 4px;
+        margin-right: 10px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+      }
+
+      .tab-button.active {
+        background-color: #ddd;
+      }
+
+      canvas {
+        display: block;
+        margin: 0 auto;
+        max-width: 800px;
+        width: 100%;
+      }
+
+      .dashboard-card {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 10px;
+        background-color: #f1f1f1;
+        border-radius: 4px;
       }
     </style>
   </head>
   <body>
-    <div class="dashboard-container">
-      <canvas id="dashboard-chart"></canvas>
+    <h1>StockWise Dashboard</h1>
+
+    <div class="tabs">
+      <div class="tab-button active" data-tab="tomatoes">Tomatoes</div>
+      <div class="tab-button" data-tab="lettuce">Lettuce</div>
     </div>
+
+    <div id="dashboard-container">
+      <canvas id="dashboard-chart" height="200"></canvas>
+
+      <div class="dashboard-card">
+        <h2 id="stock-title">Tomatoes Information</h2>
+        <p id="stock-remaining">Stock Remaining: -</p>
+        <p id="last-order-date">Last Order Date: -</p>
+        <p id="expiry-date">Expiry Date: -</p>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="dashboard.js"></script>
   </body>
